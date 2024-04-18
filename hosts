@@ -23,15 +23,26 @@
 
 #------  Group Vars Example  ----------
 
-[csr:children]
+[isr:children]
 key-chain-vars-MASTER
 
 [key-chain-vars-MASTER]
 # device_ip=192.168.50.145
 # 172.16.1.108
 # 172.16.1.109
-10.83.11.113
-10.83.11.114
+# 192.168.50.165
+# 10.83.11.113
+
+
+[nexus:children]
+key-chain-vars-MASTER
+
+[key-chain-vars-MASTER]
+# device_ip=192.168.50.145
+# 172.16.1.108
+# 172.16.1.109
+# 10.83.11.113
+# 10.83.11.114
 # 192.168.50.165
 # 10.83.11.113
 
