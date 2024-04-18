@@ -1,14 +1,14 @@
 ---
 
 - name: MACsec Pre-Shared Key Chain Configuration Playbook
-  hosts: csr
+  hosts: isr
   connection: local
   gather_facts: no
 
   tasks:
   - name: Get Login credentials
     include_vars: /mnt/hgfs/vm_shared/ansible/projects/macsec_proj/access.yml
-    #include_vars: /Users/crhill/vm_shared/ansible/projects/macsec_proj/access.yml
+    
 
 
   - name: Define Provider
@@ -39,6 +39,7 @@
         - key chain {{ chain_name }} macsec
         - key {{ key_num }}
       lines:
+      #### Need to create a varaiable to determine algorithm dynamically vs. manually toggle
         - cryptographic-algorithm aes-128-cmac
         # - cryptographic-algorithm aes-256-cmac
       match: none
@@ -54,7 +55,7 @@
         - key {{ key_num }}
       lines:
         - key-string {{ string_num }}
-        - lifetime 00:00:00 {{ start_month }} {{ start_day }} 2017 23:59:59 {{ end_month }} {{ end_day }} 2017
+        - lifetime 00:00:00 {{ start_month }} {{ start_day }} 2024 23:59:59 {{ end_month }} {{ end_day }} 2025
       match: none
     notify:
       - write config
